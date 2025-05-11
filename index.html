@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="张三的个人摄影作品集，记录旅行与自然之美">
+    <title>张三 | 摄影作品集</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+        }
+        .modal-img {
+            max-height: 90vh;
+            margin: auto;
+            cursor: zoom-out;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <!-- 导航栏 -->
+    <nav class="p-8 flex justify-between items-center max-w-7xl mx-auto">
+        <div class="text-2xl font-mono">张三摄影</div>
+        <div class="space-x-6 hidden md:flex">
+            <a href="#works" class="hover:text-yellow-400 transition">作品</a>
+            <a href="#about" class="hover:text-yellow-400 transition">关于</a>
+            <a href="#contact" class="hover:text-yellow-400 transition">联系</a>
+        </div>
+    </nav>
+
+    <!-- 作品展示 -->
+    <section id="works" class="max-w-7xl mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold mb-8 text-center">近期作品</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- 图片卡片（可复制多个） -->
+            <div class="group cursor-pointer" onclick="openModal('img/1.webp')">
+                <img src="https://picsum.photos/800/600?1" alt="冰岛极光-冬季" class="w-full h-60 object-cover rounded-lg hover:scale-105 transition-transform">
+                <p class="mt-2 text-sm text-gray-300">冰岛·极光 | 2024.12</p>
+            </div>
+            <div class="group cursor-pointer" onclick="openModal('img/2.webp')">
+                <img src="https://picsum.photos/800/600?2" alt="京都樱花-春季" class="w-full h-60 object-cover rounded-lg hover:scale-105 transition-transform">
+                <p class="mt-2 text-sm text-gray-300">京都·樱花 | 2025.03</p>
+            </div>
+            <!-- 可添加更多图片 -->
+        </div>
+    </section>
+
+    <!-- 模态框（点击放大） -->
+    <div class="modal" id="modal" onclick="closeModal()">
+        <img class="modal-img" id="modalImg">
+    </div>
+
+    <script>
+        // 打开模态框
+        function openModal(imgSrc) {
+            const modal = document.getElementById('modal');
+            const modalImg = document.getElementById('modalImg');
+            modal.style.display = 'flex';
+            modalImg.src = imgSrc;
+        }
+        // 关闭模态框
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
+    
